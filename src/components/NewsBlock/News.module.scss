@@ -1,0 +1,21 @@
+.block{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap:wrap;
+    padding-top: 30px;
+    .card {
+        flex: 0 0 33.333%;
+        max-height: 200px;
+        
+    }
+}
+
+.textField {
+    padding-top: 15px;
+}
+
+.buttons {
+    display: flex;
+    
+}
