@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import axios from "../../axios";
+import { NavigationType } from "react-router-dom";
 import axios from "../../axios";
 
 
@@ -23,9 +23,11 @@ export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (param
 
 const initialState = {
     data: null,
-    status: 'loading', 
+    status: 'loading',
+    role: null, 
 };
-console.log(initialState.data);
+
+
 
 const authSlice = createSlice({
 name: 'auth',
@@ -33,6 +35,7 @@ initialState,
 reducers: {
     logOut:(state, action) => {
         state.data = null;
+        state.role = null;
 
     }
 
@@ -45,9 +48,10 @@ extraReducers: {
     
 },
 [fetchLogin.fulfilled]: (state, action) => {
+    state.role = action.payload.role
     state.data = action.payload;
     state.status = 'loaded';
-    console.log(state.date);
+    
 
 },
 [fetchLogin.rejected]: (state, action) => {
@@ -64,6 +68,7 @@ extraReducers: {
 },
 [fetchGetMe.fulfilled]: (state, action) => {
     state.data = action.payload;
+    state.role = action.payload.role;
     state.status = 'loaded';
 
 },
@@ -98,6 +103,7 @@ extraReducers: {
 
 
 export const selectIsAuth = (state) => Boolean(state.auth.data);
+export const selectIsRole = (state) => state.auth.role;
 
 
 export const authReducer = authSlice.reducer;

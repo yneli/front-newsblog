@@ -13,20 +13,31 @@ export const fetchAddInput = createAsyncThunk('news/fetchNewsData', async (param
     const word = {text:params}
     const { data } = await axios.post("news",word);
     return data
-})
+});
+
+export const fetchSingleNew = createAsyncThunk('news/getOneNews', async (params) => {
+
+    const word = {id:params}
+    const { data } = await axios.post("getOneNews",word);
+    return data
+});
 
 
 
 
 const initialState = {
         newsData:[],
-        status:'loading' 
+        status:'loading',
+        singlNewsData:[],
     };
+
+
 
 const newsSlice = createSlice({
     name: 'news',
     initialState,
     reducers: {
+        
 
     },
     extraReducers: {
@@ -38,20 +49,29 @@ const newsSlice = createSlice({
     [fetchAddInput.fulfilled]: (state, action) => {
         state.newsData = action.payload.newData.articles;
         state.status = 'loaded';
+        
 
     },
     [fetchAddInput.rejected]: (state, action) => {
         state.status = 'error';
+    },
+
+    [fetchSingleNew.pending]: (state, action) => {
+        state.status = 'loading';
+        
+    },
+    [fetchSingleNew.fulfilled]: (state, action) => {
+        state.singlNewsData = action.payload;
+        state.status = 'loaded';
         
 
-
-}
+    },
+    [fetchSingleNew.rejected]: (state, action) => {
+        state.status = 'error';
+    }
     }})
 
     
-
-
-
 
   
 export const newsReducer = newsSlice.reducer;

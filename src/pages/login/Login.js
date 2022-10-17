@@ -13,8 +13,8 @@ const Login = () => {
 
   const { register, handleSubmit, setError, formState: {errors, isValid} } = useForm({
     defaultValues: {
-      email: 'SecendUser@gmail.ru',
-      password: 'qwe12345'
+      email: 'Admin@gmail.com',
+      password: 'Ewq12345'
     },
     mode: 'onChange',
   });

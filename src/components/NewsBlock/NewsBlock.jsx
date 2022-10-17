@@ -37,7 +37,7 @@ const onClickFetch =  () => {
       <Button onClick={onClickFetch} size='small' variant="contained">Search</Button></div>
       <div className={styles.block}>
       {dataNews ? dataNews.map((obj,index) => (
-         <Card key={index} className={styles.card} title={obj.title} image={obj.urlToImage} url={obj.url}></Card>
+         <Card id={obj.publishedAt} key={index} className={styles.card} title={obj.title} image={obj.urlToImage} url={obj.url}></Card>
  )) : 'Loading...'} 
       </div>
     </div>

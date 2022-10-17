@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import React from "react";
 import { fetchGetMe } from "./redux/slices/authSlice.js";
+import  Fullnews  from "./pages/fullnews/Fullnews.js";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Registration/>}/>
+        <Route path="/fullnews/:id" element={<Fullnews/>}/>
       </Routes>
       </Container>
     </div>

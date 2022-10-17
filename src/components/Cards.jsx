@@ -5,9 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
-function Cards({url,image,title}) {
+function Cards({url,image,title,id}) {
+  const paramId = useParams(); 
+
+  const dispatch = useDispatch();
   return (
     <div>
        <Card  sx={{ maxWidth: 345 }}>
@@ -27,7 +32,7 @@ function Cards({url,image,title}) {
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Link to={`/fullnews/${id}`}><Button  size="small">Learn More</Button></Link>
       </CardActions>
     </Card>
     </div>
