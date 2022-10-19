@@ -25,6 +25,7 @@ const initialState = {
     data: null,
     status: 'loading',
     role: null, 
+    page: 'home',
 };
 
 
@@ -37,6 +38,9 @@ reducers: {
         state.data = null;
         state.role = null;
 
+    },
+    isPage:(state, action) => {
+        state.page = action.payload;
     }
 
 },
@@ -108,4 +112,4 @@ export const selectIsRole = (state) => state.auth.role;
 
 export const authReducer = authSlice.reducer;
 
-export const { logOut } = authSlice.actions;
+export const { logOut, isPage } = authSlice.actions;

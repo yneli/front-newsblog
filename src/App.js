@@ -4,19 +4,27 @@ import { Container } from '@mui/material';
 import Login from "./pages/login/Login";
 import Registration from "./pages/registration/Registration";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import React from "react";
-import { fetchGetMe } from "./redux/slices/authSlice.js";
+import { fetchGetMe, isPage } from "./redux/slices/authSlice.js";
 import  Fullnews  from "./pages/fullnews/Fullnews.js";
 import Messanger from "./pages/messanger/Messanger.jsx";
+import Messanges from "./components/Messanges/Messanges.jsx";
+import Panel from "./components/Panel/Panel.jsx";
+import './index.scss'
 
 function App() {
 
+  const isPageData = useSelector((state) => state.auth.page);
   const dispatch = useDispatch();
+  console.log(isPageData);
+
 
   React.useEffect(() => {
     dispatch(fetchGetMe())
-  },[])
+    dispatch(isPage('home'))
+  },[]);
+  
 
 
   return (
@@ -28,7 +36,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Registration/>}/>
         <Route path="/fullnews/:id" element={<Fullnews/>}/>
-        <Route path="/messanger" element={<Messanger/>}/>
+        <Route path="/messages" element={<Messanger/>}/>
+        {/* <Route path="/friends" element={<Friends/>}/> */}
       </Routes>
       </Container>
     </div>
