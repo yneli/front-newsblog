@@ -1,7 +1,7 @@
 import React from 'react';
-import { AppBar, Container, Toolbar, IconButton, Typography, Box, Button } from '@mui/material';
+import { AppBar, Container,  Typography,  Button } from '@mui/material';
 import styles from './Header.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsAuth, logOut, selectIsRole } from '../../redux/slices/authSlice';
 
@@ -9,8 +9,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
   const isRole = useSelector(selectIsRole);
+  const {id} = useParams();
 
-  console.log(isRole)
+  
 
   const logout = () => {
     dispatch(logOut());
@@ -21,11 +22,11 @@ const Header = () => {
       
         <Container maxWidth="lg">
             <div className={styles.inner}>
-            <Link className={styles.link}  to='/'><Typography color='white' variant='h4'><div className={styles.text}>Web News</div></Typography></Link>
+            <Link className={styles.link}  to='/'><Typography color='white' variant='h3'><div className={styles.text}>MyBlog</div></Typography></Link>
                 <div className={styles.buttons}>
                 {isRole === "Admin"? <Button variant="contained">Admin Panel</Button> : ''}
                 {!isAuth? (<><Link to="/login"><Button  variant="contained">Log In</Button></Link>
-                  <Link to="/register"><Button variant="contained">Registration</Button></Link></>) : <Button onClick={logout}  variant="contained">Log Out</Button>
+                  <Link to="/register"><Button variant="contained">Registration</Button></Link></>) :<><Button variant="contained">Messenger</Button> <Button onClick={logout} color="secondary" variant="contained">Log Out</Button></>
                   }
                 </div>
             </div>

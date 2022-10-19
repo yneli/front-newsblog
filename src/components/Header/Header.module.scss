@@ -1,13 +1,18 @@
 .root {
-    background-color: rgb(110, 153, 209);
+    background-color: white;
     padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 30px;
+    border-bottom: 1px solid #4e50ad;
+    margin-bottom: 70px;
     
+    
+  }
+  .text {
+    color: #4e50ad;
   }
   
   .inner {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
 

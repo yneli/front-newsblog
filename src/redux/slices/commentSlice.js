@@ -14,7 +14,6 @@ export const fetchComment = createAsyncThunk('comment/fetchComment', async ({par
 export const getComment = createAsyncThunk('comment/fetchComment', async (params) => {
     const obj = {url: params}
     const { data } = await axios.post("comment/getComments", obj);
-    console.log(data);
     return data
 });
 

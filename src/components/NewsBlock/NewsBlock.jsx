@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './News.module.scss';
-import Card from '../Cards';
+import Card from '../Cards/Cards';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchNews,fetchAddInput } from '../../redux/slices/newsSlice';
+import { fetchNews,fetchAddInput, globalSetInput } from '../../redux/slices/newsSlice';
 import { TextField, Button } from '@mui/material';
 
 

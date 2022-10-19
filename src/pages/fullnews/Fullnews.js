@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getComment } from '../../redux/slices/commentSlice';
 import { selectIsAuth } from '../../redux/slices/authSlice';
 import { Navigate, useParams } from 'react-router-dom';
-import Cards from '../../components/Cards';
+import Cards from '../../components/Cards/Cards';
 import { fetchSingleNew } from '../../redux/slices/newsSlice';
+import FullCard from '../../components/FullCard/FullCard';
 
 
 
@@ -18,16 +19,19 @@ const Fullnews = () => {
   const isAuth = useSelector(selectIsAuth);
   const {id} = useParams();
   const newsDataSingl = useSelector((state) => state.news.singlNewsData);
+  const text = useSelector((state) => state.news.input);
+  const status = useSelector((state) => state.news.status);
+  console.log(status);
 
 
   React.useEffect(() => {
-    dispatch(fetchSingleNew(id))
+    dispatch(fetchSingleNew({id:id,text:text}))
   },id)
  
-  console.log(comentData);
-
-
   
+
+
+
 
   React.useEffect(() => {
     dispatch(getComment(id))
@@ -41,11 +45,10 @@ const Fullnews = () => {
   return (
     <>
       
-      <Cards image={newsDataSingl[0].urlToImage
-} url={newsDataSingl[0].url} title={newsDataSingl[0].title} id={id} ></Cards>
+     {status === "loaded"? <> <FullCard image={newsDataSingl[0].urlToImage} url={newsDataSingl[0].url} title={newsDataSingl[0].title} id={id} ></FullCard>
       <Comments isLoading={isLoading === "loaded"? false : true} items={comentData}>
       <AddComment url={id}/>
-      </Comments>
+      </Comments></> : 'loading'}
       
     </>
   )

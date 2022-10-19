@@ -15,9 +15,11 @@ export const fetchAddInput = createAsyncThunk('news/fetchNewsData', async (param
     return data
 });
 
-export const fetchSingleNew = createAsyncThunk('news/getOneNews', async (params) => {
+export const fetchSingleNew = createAsyncThunk('news/getOneNews', async ({text,id}) => {
 
-    const word = {id:params}
+    const word = {
+        text:'games',
+        id:id}
     const { data } = await axios.post("getOneNews",word);
     return data
 });
@@ -29,6 +31,7 @@ const initialState = {
         newsData:[],
         status:'loading',
         singlNewsData:[],
+        
     };
 
 
@@ -37,7 +40,7 @@ const newsSlice = createSlice({
     name: 'news',
     initialState,
     reducers: {
-        
+       
 
     },
     extraReducers: {

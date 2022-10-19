@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import React from "react";
 import { fetchGetMe } from "./redux/slices/authSlice.js";
 import  Fullnews  from "./pages/fullnews/Fullnews.js";
+import Messanger from "./pages/messanger/Messanger.jsx";
 
 function App() {
 
@@ -27,9 +28,11 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Registration/>}/>
         <Route path="/fullnews/:id" element={<Fullnews/>}/>
+        <Route path="/messanger" element={<Messanger/>}/>
       </Routes>
       </Container>
     </div>
+
   );
 }
 
