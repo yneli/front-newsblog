@@ -1,19 +1,34 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styles from "./Cards.module.scss";
 
 
 function Cards({url,image,title,id}) {
+
+  const [ timer, setTimer ] = useState('');
   
 
   const newUrl = url.slice(8,24);
+ useEffect(() => {
+  setTimeout(() => {
+    setTimer('1')
+  },6000);
+  setTimeout(() => {
+    setTimer('2')
+  },5000);
+  setTimeout(() => {
+    setTimer('3')
+  },4000);
+  setTimeout(() => {
+    setTimer('4')
+  },3000);
+  setTimeout(() => {
+    setTimer('5')
+  },2000)
+ },[])
+
+console.log(timer);
   
 
   const dispatch = useDispatch();
@@ -23,7 +38,7 @@ function Cards({url,image,title,id}) {
         <img className={styles.img} src={image} alt="" />
        <a className={styles.a} href={url}><div className={styles.title}>{newUrl}</div></a>
        <Link to={`/fullnews/${id}`}>
-        <div className={styles.text}>{title}</div>
+        <div className={styles.text}>{timer === '1' ? title : `please wait ${timer} sec`}</div>
         </Link>
       </div>
     </div>

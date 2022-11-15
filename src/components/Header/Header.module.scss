@@ -1,7 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 .root {
     background-color: white;
     padding: 10px 0;
-    border-bottom: 1px solid #4e50ad;
+    border-bottom: 1px solid #d2d2d8;
     margin-bottom: 70px;
   }
   .text {
@@ -15,6 +16,9 @@
   }
 
   .buttons {
+    display: flex;
+    align-items: center;
+
     button {
       margin-left: 10px;
     }
@@ -26,4 +30,12 @@
   
   .link {
     text-decoration: none;
+  }
+
+  .name{
+    font-size: 22px;
+    padding-right: 10px;
+    font-family: Poppins;
+    
+    
   }

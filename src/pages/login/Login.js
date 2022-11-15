@@ -13,8 +13,8 @@ const Login = () => {
 
   const { register, handleSubmit, setError, formState: {errors, isValid} } = useForm({
     defaultValues: {
-      email: 'Admin@gmail.com',
-      password: 'Admin'
+      email: '',
+      password: ''
     },
     mode: 'onChange',
   });
@@ -57,6 +57,7 @@ const Login = () => {
         fullWidth
       />
       <TextField 
+       type="password"
        className={styles.field}
        label="Пароль" 
        error={Boolean(errors.email?.message)}

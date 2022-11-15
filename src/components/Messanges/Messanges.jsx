@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './Messanges.module.scss';
+import MessageList from '../MessageList/MessageList';
 
 const Messanges = () => {
   return (
     <>
     <div className={styles.root}>
-      <div>
-        <img src="" alt="" />
-        <h3>Леха Смернов</h3>
-        <p>Последнее сообщение</p>
-      </div>
+      <MessageList></MessageList>
+      <MessageList></MessageList>
+      <MessageList></MessageList>
+      <MessageList></MessageList>   
     </div>
     </>
   )

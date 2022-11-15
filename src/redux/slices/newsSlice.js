@@ -28,9 +28,9 @@ export const fetchSingleNew = createAsyncThunk('news/getOneNews', async ({text,i
 
 
 const initialState = {
-        newsData:[],
-        status:'loading',
-        singlNewsData:[],
+        newsData: null,
+        status: 'loading',
+        singlNewsData: null,
         
     };
 

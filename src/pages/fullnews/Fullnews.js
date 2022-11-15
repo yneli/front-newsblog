@@ -21,9 +21,10 @@ const Fullnews = () => {
   const text = useSelector((state) => state.news.input);
   const status = useSelector((state) => state.news.status);
 
+  console.log(newsDataSingl);
   React.useEffect(() => {
     dispatch(fetchSingleNew({id:id,text:text}))
-  },id)
+  },[])
  
 
   React.useEffect(() => {
